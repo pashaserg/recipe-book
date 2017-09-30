@@ -1,0 +1,44 @@
++ angular - framework for creating reactive SPA-application.
+
++ creating project: npm install -> ng new [app-name] -> cd [app-name] -> ng serve /*for start*/
+
++ typescript - superset of javascript that has a lot of features and are compiling by CLI /* A command line interface for Angular */.
+
++ app start: at main.ts we declare main module /* => platformBrowserDynamic().bootstrapModule(AppModule) */
+  - it's meant that AppModule is main module of our app. At main module (AppModule) we declare main component
+  at bootstap property /* bootstrap: [AppComponent] */. And finaly we declare at index.html css-tag with our 
+  main component's template;
+
++ components - a key feature at Angular. The Angular app is a complex of components.
+
++ main component: there are basic component - all others components existing at this component.
+
++ creating component: component is a typescript class with @component decorator imported from '@Angular/core'.
+  for using component we have to declare our component at main module's declarations field.
+  
++ component's ts file - business logic of component (+template, styles, etc..).
+
++ component's template: it's html page, that user can see; internal -> template: `<html>....` ; external -> templateUrl : './comp..html';
+
++ component's style: internal or external styles...
+
++ component's selector - it can be like css-selector: 'app-component' or like property '[app-component]' or like css-class '.app-component';
+
++ databinding - communication between data from our bussiness logic and vour view.
+  + one way databinding:
+    + string interpolation -> {{ field }} - from BL to view
+    + property binding -> [property]='field' - from BL to view
+    + event binding (event) = ' expression' - from view to BL
+  + two-way databinding:
+    + using of ngModel directive [(ngModel)]='data'
+
++ directives: are instructions in DOM; ts class with @Directive decorator
+  + struct  - add or remove elements in DOM ( *ngIf, *ngFor )
+  + atribute  - change elements where they are ( ngStyle, ngClass )
+  
+  
++*ngIf: add or remove element at DOM if *ngIF='true'
+
++ngFor: add a list of ?fields? at DOM -> <div *ngFor="let item of items"; let i = index" >, where item - each field of list of items, i - index from 0.
+
+
