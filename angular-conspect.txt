@@ -33,12 +33,39 @@
     + using of ngModel directive [(ngModel)]='data'
 
 + directives: are instructions in DOM; ts class with @Directive decorator
-  + struct  - add or remove elements in DOM ( *ngIf, *ngFor )
-  + atribute  - change elements where they are ( ngStyle, ngClass )
+  + structural?  - add or remove elements in DOM ( *ngIf, *ngFor )
+  + atributive?  - change elements where they are ( ngStyle, ngClass )
   
   
 +*ngIf: add or remove element at DOM if *ngIF='true'
 
-+ngFor: add a list of ?fields? at DOM -> <div *ngFor="let item of items"; let i = index" >, where item - each field of list of items, i - index from 0.
++ ngFor: add a list of ?fields? at DOM -> <div *ngFor="let item of items"; let i = index" >, where item - each field of list of items, i - index from 0.
 
++ @Input(' outsideName' ) decorator from '@Angular/core': (binding component's properties beetween 2 components)  all component's properties by default are available only inside of this component.
+   If you need to use some properties from children component in parent component you have to use @Input decorator to make available field you are needed.
+   outsideName - name for children's property for using this property outside like (wos 'element' -> serverElement). It looks like @Input('serverElement') element: string; 
 
++ EventEmitter<someObject>() - object that allow you emitt your own event;
+
++ @Output(' ') decorator from '@angular/core' - listning your own events ...
+
++ View encapsulation: each component has own css style through adding the own attribute to each own css-tag at DOM).
+
++ Local references ( like <input #ref ...> ) - hold reference to html tah with all properties. You can use it only inside template , not at stypescript code.
+   If ref to input element - you can get the value of input of input -> ref.value.
+
++ @ViewChild('ref') field: ElementRef. -> this.field.nativeElement.value.
+
++ <ng-content></ng-content> directive at component template. 
+   All code taht are beetween opening and clothing selector of this component ( <app-component>...|...</app-component> )moving to the <ng-content></>.
+
++ The component Lifecicle: 
+	+ ngOnChanges - called when component is creating and each time when the component's input is changing
+	+ ngOnInit - called once when the component is initializined ( AFTER CONSTRUCTOR ).
+	+ ngDoCheck - called during every change detection run (any changes at template).
+	+ ngAfterContentInit - called every time the project's content has been checked.
+	+ ngAfterViewInit
+	+ngAfterViewChecked
+	+ngOnDestroy.
+
++ @ContentChild('name' paragraph: RefElementKey -> access to ng-content;
