@@ -3,6 +3,8 @@
 
 + creating component by CLI ->	ng g c component_name -spec false
 
++ creating directive by CLI -> ng g d directive_name
+
 + Augury -> Chrome extension for debaging an angular app, and allow you to look on dependencies. 
 
 

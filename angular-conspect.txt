@@ -33,9 +33,10 @@
     + using of ngModel directive [(ngModel)]='data'
 
 + directives: are instructions in DOM; ts class with @Directive decorator
-  + structural?  - add or remove elements in DOM ( *ngIf, *ngFor )
-  + atributive?  - change elements where they are ( ngStyle, ngClass )
+  + structural  - add or remove elements in DOM ( *ngIf, *ngFor, [ngSwtich] )
+  + attribute  - change elements where they are ( ngStyle, ngClass )
   
++ we can't have more than one structural directiove on the one element.
   
 +*ngIf: add or remove element at DOM if *ngIF='true'
 
@@ -44,6 +45,33 @@
 + @Input(' outsideName' ) decorator from '@Angular/core': (binding component's properties beetween 2 components)  all component's properties by default are available only inside of this component.
    If you need to use some properties from children component in parent component you have to use @Input decorator to make available field you are needed.
    outsideName - name for children's property for using this property outside like (wos 'element' -> serverElement). It looks like @Input('serverElement') element: string; 
+
++ For creating your own attribute directive, you have to:
+   1) creacte .ts file with class.   
+   2)this class has to be with @Directive decorator (from '@Angular/core').  
+   3)you have to use elRef: ElementRef at constructor - for getting access to the element.  
+   4) at onInit you can do somethink like ->  this.elRef.nativeElement.style.backgroundColor = 'green'.
+   5) you have to inform AppModule about using this directive at declarations array.
+   
+   !!! better way:
+    1) creacte .ts file with class.   
+   2)this class has to be with @Directive decorator (from '@Angular/core').  
+   3)you have to use elRef: ElementRef at constructor - for getting access to the element and renderer: Renderer2 ( you should use the Renderer for any DOM manipulations )
+   4) at onInit you can do somethink like -> this.elRef.renderer.setStyle( this.elRef.nativeElement, 'background-color', 'blue')
+   5) you have to inform AppModule about using this directive at declarations array.
+
++ @HostListener decorator is allow to bind DOM event with directive's methods like ->
+   @HostListener("mouseenter") onMouseEnter() { this.elRef.renderer.setStyle( this.elRef.nativeElement, 'background-color', 'blue'); }
+                              DOM event       method of directive
+
++ @HostBinding decorator for binding class property with directive's element's property 
+
++  use HostBinding with HostListener and @Input decorator for creating dinamic directives.	
+	host: {
+ 	   '(mouseenter)': 'onMouseEnter()',
+	    '(mouseleave)': 'onMouseLeave()'
+	}
+
 
 + EventEmitter<someObject>() - object that allow you emitt your own event;
 
