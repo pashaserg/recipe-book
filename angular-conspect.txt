@@ -97,3 +97,28 @@
 	+ngOnDestroy.
 
 + @ContentChild('name' paragraph: RefElementKey -> access to ng-content;
+
++ Services - Dependencies are singletons within the scope of an injector. use for 'D.R.Y'. It's a simple ts class ( name.service.ts ).
+   for using that you have to import and add service to the providers array of  the component, where you will use this service.
+
++ We use Service :
+	+when we working with data, 
+	+when we have some business-logic and it's logic dosn't touch the templates, 
+	+for logging, 
+	+when we need some communication between components
+
++  Hierarchical Injector:
+	+AppModule - Same instance of Service is available Application-wide
+	+AppComponent - same instance of service is available for all Components ( but not for other services)
+	+Any other component - same instance of Service is available for component and all its child component  
+   --> if you want to create one instance of a Service -> add it to the highest level componet (import it and add to the providers array), [ add it to the appModule (import it and add to the providers array) ]
+        BUT at childs components ONLY import that service and add to the constructors, BUT DON'T add it to the providers array 
+
++ Injecting one service into another: you have to add the first service to the providers array of the appModule, then import and "create" instance of first service at constructor of second service,
+   then you have to use @Injectable decorator from '@Angular/core' for second service 
+	(looks like -> @Injectable() 
+		export class secondService{ 
+		constructor ( fService: FirstService ){} 
+				}
+
++ decorators ( like @Component, @Directive, @Injectable) - metadata for app ...
