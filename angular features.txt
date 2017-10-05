@@ -7,4 +7,9 @@
 
 + Augury -> Chrome extension for debaging an angular app, and allow you to look on dependencies. 
 
++ [routerLinkActiveOptions] = {exact: true} -    --   only if path has full match   --  use this for '/' - path and you will not have problem with two active links at one time
+
++ WildCard route : { path: '**', redirectTo: '/non-found'} - this route catch all routs you don't know;  - HAS TO BE LAST
+
++ best practice of routing: take out routing at single file -  app-routing.module
 

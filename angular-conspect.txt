@@ -122,3 +122,45 @@
 				}
 
 + decorators ( like @Component, @Directive, @Injectable) - metadata for app ...
+
++ setuping routes: 	1) at AppModule add array  
+		const yourAppRoutes: Routes = [ { path: 'path_you_want_waithout_slash', component: component_you_want_to_see }, {another route...}, ...so on ]
+		2) at AppModule's imports array add RouterModel.forRoot( yourAppRoutes ) -> now Angular know about your routing and you can use it.
+
++ you need add <router-outlet></router-outlet> selector to your appComponent.html (or another place ...) -> here you will see the template, when you use this component's path.
+
++ add ruterLink='/somePath'  to your links   -> the browser will not reload the page if you click that link
+
++ when your path has '/'     --  SLASH --       - it's absolute path, when it hasn't - it's a relative path ( path from current path)
+
++ routerLinkActive='className' - it's directive , you could use if you want to add some specific class to active link. -> if this path == curent path, this link get className 
+   -> <li routerLinkActive='active'> <a routerLink='/somePAth'> liName </li>
+
++ this.router.navigate(['/servers']) - after injecting router: Router at component's constructor - you could use it for navigating from component (for ex. after some calculatings )
+
++ passing parameters to routes -> just add 'somePath/:id/:name'    -  : - tells that id & name are dynamical parameters
+
++ fetching route parameters 
+   -> at component inject route: ActivatedRoute at constructor 
+  then ( you can do it at onInit) this.user = { id: this.route.snapshot.params['id'], name: this.route.snapshot.params['name']
+
++ ActivatedRoute - js object, that has a lot of data about current route;
+
++ [queryParams] = { allowEdit: "1" } - adding query parameters to the link     ( you could do it from component )
+
++ fragment = "loading" - adding fragment to the link		( you could do it from component )
+
++ Setting up shild nested routes: 
+   ... { path: 'path_you_want_waithout_slash', component: component_you_want_to_see, children: [ { path: 'chidPath', component: SomeComponent }, {...}  ...  ]  }
+  And you will need <router-outlet></router-outlet>  at parent component for displaying childrens
+
++ WildCard route : { path: '**', redirectTo: '/non-found'} - this route catch all routs you don't know and redirect to '/non-found';  - HAS TO BE LAST.  == [ { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' }  ]
+
++ canActivate - can protect some route with child routes.
+
++ canActivateChild - can protect only child routes.
+
++ canDeactivate - can protect you from accidental leaving the page.
++ Passing Static data to a route: you can use 'data' property of some route( looks like -> ....{ path: '/somePath', component: SomeComponent, data: {message: 'some message}   }
+   the at component you could use this data like  -> this.ComponentMessageString =  this.route.snapshot.data['message'].		route - ActivatedRoute
+
