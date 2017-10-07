@@ -13,3 +13,4 @@
 
 + best practice of routing: take out routing at single file -  app-routing.module
 
++ RxJS - documentation.

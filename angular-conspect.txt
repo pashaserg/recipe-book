@@ -164,3 +164,8 @@
 + Passing Static data to a route: you can use 'data' property of some route( looks like -> ....{ path: '/somePath', component: SomeComponent, data: {message: 'some message}   }
    the at component you could use this data like  -> this.ComponentMessageString =  this.route.snapshot.data['message'].		route - ActivatedRoute
 
++ Observable - various data sources ( user input) events, http requests, triggered in code.. (Implements observable pattern)
+
++ Be shure unsubscribe observable after living the page -> for each Observable create own subscribtion: Subscription, then at ngOnDestroy you can call this.subscription.unsuscribe();
+
++ subject from rxjs - observer and observable in one object;
