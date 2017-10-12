@@ -1,4 +1,4 @@
-+ using bootstrap at project -> 	npm install --save bootstrap, then we should to inform our project abuat using bootstrap - > at .angular-cli.json  
++ using bootstrap at project -> 	npm install --save bootstrap, then we should to inform our project abaut using bootstrap - > at .angular-cli.json  
    styles array  add path to "../node_modules/bootstrap/dist/css/bootstrap.min.css" from index.html point.
 
 + creating component by CLI ->	ng g c component_name -spec false
@@ -14,3 +14,12 @@
 + best practice of routing: take out routing at single file -  app-routing.module
 
 + RxJS - documentation.
+
++ From Validators : https://angular.io/api/forms/Validators
+
++ if you need to create some form controls dynamically or your own validator (or acyncValidator ( like email validator ) ) (like forbidden names) - use reactive form FormArray
+
++ you can listening changes at your (reactive) form using this.signupForm.valueChanges.subscribe( ( value ) => console.log(value) );  when signupForm: FormGroup
+   or this.signupForm.statusChanges.subscribe( ( value ) => console.log(value) ); (valid or invalid status)
+
++ if you need to go back(navigation) -> 	 this.router.navigate(['../'], {relativeTo: this.route}), where router: Router, route: ActivatedRouter

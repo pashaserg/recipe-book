@@ -169,3 +169,34 @@
 + Be shure unsubscribe observable after living the page -> for each Observable create own subscribtion: Subscription, then at ngOnDestroy you can call this.subscription.unsuscribe();
 
 + subject from rxjs - observer and observable in one object;
+
++ there are 2 approach to forms at angular: Template-Driven - angular infers the form object from the DOM; 2) Reactive - form is created programmaticaly and syncronized with the DOM.
+
++ for working with forms you have to add FormsModule in imports arr of AppModule.
+
++ to inform angular that we want to use some form input like a controll - we have to add ngModule  -- it's directive --,
+   then you have to set name attr for this input. looks laike -> <input type="text" ngModel name="inputName">
+
++ for using onSubmit event of form - add (ngSubmit)="onSubmit[or any name you like]" , looks like -> <form (ngSubmit)="onSubmit()">...</form>
+   then at component.ts file you could implement this method -> onSubmit() {.console.log("submitted"); ....}
+
++ to get submitted data from the form, you can use this -> <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">...</form>
+   then at component.ts -> onSubmit(OBJECT) {.console.log(OBJECT); ....}           |   OBJECT - simple js object.
+
++ to disable submit button when form controls is not valid  -> use [disabled]='!form.valid'
+
++ use input|selector.ng-invalid.ng-touched { border: 1px solid red} - to give some css style to invalid fields
+
++ use #inputControl="ngModel" for input and now you could create warning field for invalid form field.
+   we could do the same for #ngModelGroup...
+
++ for putting some value to the some input of the form, you could use next:
+	+ dataBinding
+	+@ViewChild('-(#)-form') signingForm: NgForm; -> this.signingForm.setValue( { name: "someName, email: "someEmail"... } );   -  you will change all fields of your form
+	+@ViewChild('-(#)-form') signingForm: NgForm; -> this.signingForm.form.patchValue( { name: "someName" } ); - only for some fields
+
++ for reseting form inputs, you could use @ViewChild(Form) form: NgForm; -> this.form.reset();
+
++ Reactive form:  you create template of your form, then at component.ts you configure your form (default value, validators,  )
+   at template you only syncrinize your template from with your programmaticaly created form at component.ts 
+
