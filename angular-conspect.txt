@@ -200,3 +200,14 @@
 + Reactive form:  you create template of your form, then at component.ts you configure your form (default value, validators,  )
    at template you only syncrinize your template from with your programmaticaly created form at component.ts 
 
++ Pipes - futures in the Angular 4 allows you to transform output at templates (sync and sync data) ->     <p> {{someData | pipename}} </p>
+
++ you can parametrize pipes ->	<p> {{someData | pipename: 'parameter': 'another one}} </p>
+
++ you can combine pipes -> <p> {{someData | pipename  | anotherOne}} </p>
+
++ you can create pipe -> pipename.pipe.ts. this class has to implemets PipeTransform  ->	
+	@Pipe({name: 'shorten})  export class ShortenPipe implements PipeTransform{ transform( value: any, paramName: number...param2,..) { ....return value.... } } -> add this pipe at app.module declarations array
+	now you can use shorten pipe
+
++ for using HTTP inject http:HTTP service at your service ->	@Injectabel .....{constructor(http: HTTP..)....}

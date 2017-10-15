@@ -5,6 +5,8 @@
 
 + creating directive by CLI -> ng g d directive_name
 
++ creating pipe by CLI -> ng g p pipe_name
+
 + Augury -> Chrome extension for debaging an angular app, and allow you to look on dependencies. 
 
 + [routerLinkActiveOptions] = {exact: true} -    --   only if path has full match   --  use this for '/' - path and you will not have problem with two active links at one time
@@ -23,3 +25,11 @@
    or this.signupForm.statusChanges.subscribe( ( value ) => console.log(value) ); (valid or invalid status)
 
 + if you need to go back(navigation) -> 	 this.router.navigate(['../'], {relativeTo: this.route}), where router: Router, route: ActivatedRouter
+
++ built-in pipes  ->  	https://angular.io/api?query=pipes
+
++ pipes - good way to get filter
+
++ @Pipe({name: 'somename', pure: false}).. 	-> 	use pure: false 	if you want to reload some data at html after changing data ( for ex: at some filter) -> be careful to use this future.
+
++ use | sync pipe for async data at template 
