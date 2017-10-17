@@ -211,3 +211,20 @@
 	now you can use shorten pipe
 
 + for using HTTP inject http:HTTP service at your service ->	@Injectabel .....{constructor(http: HTTP..)....}
+
++ Angular Module identifies the module's own components, directives, and pipes, making some of them public so external components can use them
+
++ declarations arr: componesns, directives, pipes this module uses; 
+
++ import arr: other modules this module uses
+
++ providers arr: services. everythink we provide here is avaliable at all app
+
++ bootstrap arr: here are root component
+
++ at your own Module at imports arr add CommonModule - to get access to common features (some directories etc.)
+
++ !!! you must not duplicate declarations in defferents modules. one declaration for component, pipe or directive only at one module
+
++ for creating shared module -> at exports arr of sh. module add somethink you want to share, 
+	and at modules, where you want to use this somethink -> add this somethink at imports array! :)
